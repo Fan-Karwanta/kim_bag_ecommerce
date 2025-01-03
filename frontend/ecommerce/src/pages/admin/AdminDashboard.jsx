@@ -42,7 +42,7 @@ const AdminDashboard = () => {
           {/* ADD Bag BTN */}
           <button className="btn btn-primary">
             <Link to="/add_bag" className="text-white text-decoration-none">
-              Add New Bag
+              Add Product
             </Link>
           </button>
         </div>

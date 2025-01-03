@@ -241,15 +241,6 @@ const Profile = () => {
                   />
                 </div>
                 <div className="mb-4">
-                  <label className="form-label mb-2">E-mail:</label>
-                  <input
-                    type="email"
-                    className="form-control bg-secondary bg-opacity-25 border-0 py-2"
-                    value={userData.email}
-                    readOnly
-                  />
-                </div>
-                <div className="mb-4">
                   <label className="form-label mb-2 ">Birthday:</label>
                   <input
                     type="date"
@@ -270,8 +261,17 @@ const Profile = () => {
                     value={isEditing ? editedData.address : userData.address}
                     onChange={handleChange}
                     disabled={!isEditing}
-                    rows="4"
+                    
                     style={{ resize: 'none' }}
+                  />
+                </div>
+                <div className="mb-4">
+                  <label className="form-label mb-2">E-mail:</label>
+                  <input
+                    type="email"
+                    className="form-control bg-secondary bg-opacity-25 border-0 py-2"
+                    value={userData.email}
+                    readOnly
                   />
                 </div>
                 <div className="mt-4">

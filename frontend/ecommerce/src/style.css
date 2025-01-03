@@ -57,3 +57,7 @@
     background-color: aqua; 
   }
    */
+
+   .selected-item {
+    border: 2px solid beige;
+  }

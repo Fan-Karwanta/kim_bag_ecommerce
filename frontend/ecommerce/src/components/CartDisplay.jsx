@@ -160,6 +160,12 @@ function CartDisplay({ email, cartItems, setCartItems }) {
         <div
           key={item.cart_id}
           className="d-flex justify-content-between align-items-center border rounded p-3 mb-3"
+          style={{
+            borderColor: selectedItems.includes(item.prod_name) ? "#eab676" : "#dee2e6",
+            borderWidth: selectedItems.includes(item.prod_name) ? "2px" : "1px",
+            transition: "border-color 0.2s ease, border-width 0.2s ease",
+            backgroundColor: selectedItems.includes(item.prod_name) ? "#eab676" : "transparent"
+          }}
         >
           <input
             type="checkbox"
@@ -174,6 +180,7 @@ function CartDisplay({ email, cartItems, setCartItems }) {
               height: "auto",
               maxWidth: "100px",
               maxHeight: "100px",
+              marginLeft: 10,
             }}
           />
           <div className="flex-grow-1 m-4">

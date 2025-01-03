@@ -1,62 +1,107 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import logo from "./logo.png";
 
 const Navbar = () => {
   const location = useLocation();
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  // Function to check if the current route is active
   const isActive = (path) => location.pathname === path;
 
   return (
-    <nav
-      className="navbar navbar-expand-lg px-4 py-3"
-      style={{
-        backgroundColor: "#eab676", // Original navbar color
-        color: "#fff",
-      }}
-    >
-      <div className="container-fluid">
-        <div className="d-flex align-items-center">
-          <img
-            src={logo}
-            alt="Logo"
+    <div className="position-relative">
+      <nav
+        className="navbar px-4 py-3"
+        style={{
+          backgroundColor: "#eab676",
+          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+        }}
+      >
+        <div className="container-fluid">
+          {/* Spacer for left side */}
+          <div style={{ width: "40px" }}></div>
+
+          {/* Logo and Text - Always centered */}
+          <div
+            className="d-flex align-items-center justify-content-center"
             style={{
-              maxHeight: "40px",
-              marginRight: "15px",
+              position: "absolute",
+              left: "50%",
+              transform: "translateX(-50%)",
             }}
-          />
-          <span
-            className="navbar-brand fs-4"
-            style={{ color: "#fff", fontWeight: "bold" }}
           >
-            BareBag
-          </span>
+            <img
+              src={logo}
+              alt="Logo"
+              style={{
+                maxHeight: "40px",
+                marginRight: "10px",
+              }}
+            />
+            <span
+              className="navbar-brand mb-0 fs-4"
+              style={{ color: "#fff", fontWeight: "bold" }}
+            >
+              BareBag
+            </span>
+          </div>
+
+          {/* Hamburger Button - Fixed to right */}
+          <button
+            className="navbar-toggler ms-auto"
+            type="button"
+            aria-expanded={menuOpen}
+            aria-label="Toggle navigation"
+            onClick={() => setMenuOpen(!menuOpen)}
+            style={{
+              border: "none",
+              padding: "8px",
+              borderRadius: "5px",
+              backgroundColor: "#fff",
+              width: "40px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              zIndex: 1,
+            }}
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
         </div>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+      </nav>
+
+      {/* Dropdown Menu */}
+      {menuOpen && (
+        <div
+          style={{
+            position: "absolute",
+            top: "100%",
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: "90%",
+            maxWidth: "300px",
+            backgroundColor: "#f8d7a9",
+            borderRadius: "8px",
+            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+            zIndex: 1000,
+            marginTop: "4px",
+          }}
         >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto">
+          <ul
+            className="navbar-nav text-center p-3"
+            style={{ margin: 0, padding: 0, listStyleType: "none" }}
+          >
             <li className="nav-item">
               <Link
                 to="/marketplace"
-                className={`nav-link ${
-                  isActive("/marketplace") ? "active" : ""
-                }`}
+                className={`nav-link ${isActive("/marketplace") ? "active" : ""}`}
                 style={{
-                  color: "#fff",
-                  position: "relative",
+                  color: "#6c757d",
+                  padding: "10px",
+                  display: "block",
                   fontWeight: "bold",
+                  position: "relative",
                 }}
               >
                 Marketplace
@@ -64,11 +109,11 @@ const Navbar = () => {
                   <div
                     style={{
                       position: "absolute",
-                      bottom: "-5px",
+                      bottom: "0",
                       left: 0,
                       right: 0,
                       height: "3px",
-                      backgroundColor: "#fff", // White marker
+                      backgroundColor: "#6c757d",
                       borderRadius: "2px",
                     }}
                   ></div>
@@ -80,9 +125,11 @@ const Navbar = () => {
                 to="/cart"
                 className={`nav-link ${isActive("/cart") ? "active" : ""}`}
                 style={{
-                  color: "#fff",
-                  position: "relative",
+                  color: "#6c757d",
+                  padding: "10px",
+                  display: "block",
                   fontWeight: "bold",
+                  position: "relative",
                 }}
               >
                 Cart
@@ -90,11 +137,11 @@ const Navbar = () => {
                   <div
                     style={{
                       position: "absolute",
-                      bottom: "-5px",
+                      bottom: "0",
                       left: 0,
                       right: 0,
                       height: "3px",
-                      backgroundColor: "#fff", // White marker
+                      backgroundColor: "#6c757d",
                       borderRadius: "2px",
                     }}
                   ></div>
@@ -106,9 +153,11 @@ const Navbar = () => {
                 to="/profile"
                 className={`nav-link ${isActive("/profile") ? "active" : ""}`}
                 style={{
-                  color: "#fff",
-                  position: "relative",
+                  color: "#6c757d",
+                  padding: "10px",
+                  display: "block",
                   fontWeight: "bold",
+                  position: "relative",
                 }}
               >
                 Profile
@@ -116,11 +165,11 @@ const Navbar = () => {
                   <div
                     style={{
                       position: "absolute",
-                      bottom: "-5px",
+                      bottom: "0",
                       left: 0,
                       right: 0,
                       height: "3px",
-                      backgroundColor: "#fff", // White marker
+                      backgroundColor: "#6c757d",
                       borderRadius: "2px",
                     }}
                   ></div>
@@ -132,9 +181,11 @@ const Navbar = () => {
                 to="/"
                 className={`nav-link ${isActive("/") ? "active" : ""}`}
                 style={{
-                  color: "#fff",
-                  position: "relative",
+                  color: "#6c757d",
+                  padding: "10px",
+                  display: "block",
                   fontWeight: "bold",
+                  position: "relative",
                 }}
               >
                 Logout
@@ -142,11 +193,11 @@ const Navbar = () => {
                   <div
                     style={{
                       position: "absolute",
-                      bottom: "-5px",
+                      bottom: "0",
                       left: 0,
                       right: 0,
                       height: "3px",
-                      backgroundColor: "#fff", // White marker
+                      backgroundColor: "#6c757d",
                       borderRadius: "2px",
                     }}
                   ></div>
@@ -155,8 +206,8 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-      </div>
-    </nav>
+      )}
+    </div>
   );
 };
 
