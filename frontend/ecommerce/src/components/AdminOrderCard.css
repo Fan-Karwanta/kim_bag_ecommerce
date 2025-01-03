@@ -1,0 +1,55 @@
+.order-card {
+    display: flex;
+    flex-direction: row; /* Aligns items horizontally */
+    border: 2px solid #eab676 ;
+    padding: 20px;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    border-radius: 20px;
+}
+
+.order-header {
+    display: flex;
+    flex-direction: column; /* Align header elements vertically */
+    margin-right: 20px;
+}
+
+.order-id {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.order-status {
+    display: flex;
+    align-items: center;
+}
+
+.status-button {
+    background-color: #eab676;
+    color: white;
+    padding: 5px 15px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.order-details {
+    display: flex;
+    flex-direction: column; /* Align order details vertically */
+    width: 100%;
+}
+
+.customer-name,
+.address,
+.purchases {
+    margin-bottom: 10px;
+}
+
+.purchases ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.purchases li {
+    margin-left: 20px;
+}
