@@ -220,9 +220,9 @@ app.get("/cart/:email", async (req, res) => {
         c.prod_name,
         c.quantity,
         c.price,
-        g.image
+        b.image
       FROM cart c
-      JOIN bags_tbl g ON c.prod_name = g.prod_name
+      JOIN bags_tbl b ON c.prod_name = b.prod_name
       WHERE c.email = ?;
     `;
 
@@ -261,9 +261,9 @@ app.post("/checkout", async (req, res) => {
 
     // First verify the items exist in cart and check stock
     const cartQuery = `
-      SELECT c.*, g.stock 
+      SELECT c.*, b.stock 
       FROM cart c
-      JOIN bags_tbl g ON c.prod_name = g.prod_name 
+      JOIN bags_tbl b ON c.prod_name = b.prod_name 
       WHERE c.email = ? AND c.prod_name IN (?)
     `;
 
